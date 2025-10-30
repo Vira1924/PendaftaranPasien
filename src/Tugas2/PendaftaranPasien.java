@@ -9,19 +9,26 @@ package Tugas2;
  */
 
 public class PendaftaranPasien {
-    /** Biaya administrasi default */
+    /**
+     * Biaya administrasi default
+     */
     public static final int BIAYA_ADMIN_DEFAULT = 25000;
-    /** Biaya dokter default */
+    /**
+     * Biaya dokter default
+     */
     public static final int BIAYA_DOKTER_DEFAULT = 100000;
     private String namaPasien;
     private String namaDokter;
     private double biayaDokter;
     private double biayaAdmin;
+    private double persentaseDiskon;
+
 
     // Encapsulate Field
 
     /**
      * Mengambil nama pasien.
+     *
      * @return nama pasien
      */
     public String getNamaPasien() {
@@ -30,6 +37,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengatur nama pasien.
+     *
      * @param namaPasien nama pasien
      */
 
@@ -39,6 +47,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengambil nama dokter.
+     *
      * @return nama dokter
      */
 
@@ -48,6 +57,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengatur nama dokter.
+     *
      * @param namaDokter nama dokter
      */
 
@@ -57,6 +67,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengambil biaya dokter.
+     *
      * @return biaya dokter
      */
 
@@ -66,6 +77,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengatur biaya dokter.
+     *
      * @param biayaDokter biaya dokter
      */
 
@@ -75,6 +87,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengambil biaya administrasi.
+     *
      * @return biaya administrasi
      */
 
@@ -84,6 +97,7 @@ public class PendaftaranPasien {
 
     /**
      * Mengatur biaya administrasi.
+     *
      * @param biayaAdmin biaya administrasi
      */
 
@@ -93,10 +107,11 @@ public class PendaftaranPasien {
 
     /**
      * Konstruktor untuk membuat objek pasien baru.
-     * @param namaPasien nama pasien
-     * @param namaDokter nama dokter
+     *
+     * @param namaPasien  nama pasien
+     * @param namaDokter  nama dokter
      * @param biayaDokter biaya dokter
-     * @param biayaAdmin biaya administrasi
+     * @param biayaAdmin  biaya administrasi
      */
 
     public PendaftaranPasien(String namaPasien, String namaDokter, double biayaDokter, double biayaAdmin) {
@@ -116,19 +131,24 @@ public class PendaftaranPasien {
         System.out.println("Dokter: " + getNamaDokter());
         System.out.println("Biaya Dokter: " + getBiayaDokter());
         System.out.println("Biaya Administrasi: " + getBiayaAdmin());
-        System.out.println("Total Pembayaran: " + hitungTotalBiaya());
+        System.out.println("Total Pembayaran: " + hitungTotalDenganDiskon());
     }
+
 
     /**
      * Menghitung total biaya dokter dan administrasi.
+     *
      * @return total biaya
      */
 
     // Extract Method
-    private double hitungTotalBiaya() {
-        double total = getBiayaDokter() + getBiayaAdmin();
+    public double hitungTotalDenganDiskon() {
+        double diskon = getBiayaDokter() * (persentaseDiskon / 100);
+        double total = (getBiayaDokter() - diskon) + getBiayaAdmin();
         return total;
     }
-
 }
+
+
+
 
